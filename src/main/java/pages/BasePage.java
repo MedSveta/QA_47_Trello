@@ -19,4 +19,9 @@ public class BasePage {
                 .until(ExpectedConditions
                         .elementToBeClickable(element)).click();
     }
+
+    public boolean validateTextInElementWait(WebElement element, String text, int time){
+        return new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions
+                .textToBePresentInElement(element, text));
+    }
 }
