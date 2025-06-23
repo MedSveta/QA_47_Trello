@@ -25,6 +25,17 @@ public class BoardsPage extends BasePage {
     @FindBy(xpath = "//button[@data-testid='create-board-submit-button']")
     WebElement btnCreateNewBoardSubmit;
 
+    @FindBy(xpath = "//button[@data-testid='header-member-menu-button']")
+    WebElement btnAccount;
+    @FindBy(xpath = "//span[text()='Manage account']")
+    WebElement btnManageAccount;
+
+
+    public void openMyAccount(){
+        clickWait(btnAccount, 3);
+        clickWait(btnManageAccount, 3);
+    }
+
     public boolean validateUrl() {
         return new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions

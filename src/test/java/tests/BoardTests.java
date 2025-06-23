@@ -10,6 +10,7 @@ import pages.BoardsPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MyBoardPage;
+import static utils.RandomUtils.*;
 
 public class BoardTests extends AppManager {
     @BeforeMethod
@@ -24,7 +25,9 @@ public class BoardTests extends AppManager {
 
     @Test
     public void createNewBoardPositiveTest(){
-        Board board = Board.builder().boardTitle("vgt12").build();
+        //Board board = Board.builder().boardTitle("vgt12").build();
+        Board board = Board.builder()
+                .boardTitle(generateString(5)).build();
         new BoardsPage(getDriver()).createNewBoard(board);
         Assert.assertTrue(new MyBoardPage(getDriver())
                 .validateBoardName(board.getBoardTitle(), 5));
