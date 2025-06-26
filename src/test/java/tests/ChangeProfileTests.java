@@ -2,6 +2,7 @@ package tests;
 
 import dto.User;
 import manager.AppManager;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AtlassianPage;
@@ -38,5 +39,7 @@ public class ChangeProfileTests extends AppManager {
         getDriver().switchTo().window(tabs.get(1));
         AtlassianPage atlassianPage = new AtlassianPage(getDriver());
         atlassianPage.changeMyProfilePhoto("src/main/resources/cat3.png");
+        Assert.assertTrue(atlassianPage.validateMessage("We've uploaded your new avatar." +
+                " It may take a few minutes to display everywhere."));
     }
 }
