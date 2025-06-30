@@ -20,10 +20,21 @@ public class MyBoardPage extends BasePage {
     @FindBy(xpath = "//div[text()='Close board']")
     //@FindBy(xpath = "//span[@aria-label='Close board']/..") //если русский язык
     WebElement btnCloseBoard;
+    @FindBy(xpath = "//button[@data-testid='popover-close-board-confirm']")
+    WebElement btnClose;
+    @FindBy(xpath = "//button[@data-testid='close-board-delete-board-button']")
+    WebElement btnDeleteBoard;
+    @FindBy(xpath = "//button[@data-testid='close-board-delete-board-confirm-button']")
+    WebElement btnDelete;
 
     public void deleteBoard() {
     clickWait(btnMenuDots, 3);
     clickWait(btnCloseBoard, 3);
+    clickWait(btnClose, 3);
+    pause(2);
+    clickWait(btnMenuDots, 3);
+    clickWait(btnDeleteBoard, 3);
+    clickWait(btnDelete, 3);
 
     }
 
