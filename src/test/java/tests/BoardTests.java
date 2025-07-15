@@ -19,7 +19,7 @@ import static utils.RandomUtils.*;
 @Listeners(TestNgListener.class)
 
 public class BoardTests extends AppManager {
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void login() {
         User user = User.builder()
                 .email("sveta1978medved@gmail.com")
@@ -29,7 +29,7 @@ public class BoardTests extends AppManager {
         new LoginPage(getDriver()).login(user);
     }
 
-    @Test
+    @Test(groups = {"smoke", "regres"})
     public void createNewBoardPositiveTest() {
         //Board board = Board.builder().boardTitle("vgt12").build();
         Board board = Board.builder()
@@ -39,7 +39,7 @@ public class BoardTests extends AppManager {
                 .validateBoardName(board.getBoardTitle(), 5));
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void createNewBoardNegativeTest() {
         Board board = Board.builder().boardTitle("").build();
         new BoardsPage(getDriver()).createNewBoardNegative(board);
