@@ -17,7 +17,7 @@ public class BasePage {
             throw new RuntimeException(e);
         }
     }
-
+    //chrome
     public static void setDriver(WebDriver wd) {
         driver = wd;
     }
